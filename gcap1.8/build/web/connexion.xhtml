@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <script type="text/javascript">
+        </script>
+        <title>Page de connexion</title>
+    </h:head>
+    <h:body style="background-image: url(images/body.png)">
+        
+    <p:layout style="height: 45%;width: 29%;position: absolute;left: 35%;top: 30%;right: 30%; ">
+        
+        <p:layoutUnit position="center" header="Connection"
+             style="position: relative ;height: 44%;width: 40%;border-radius:5px;box-shadow: 15px 15px 15px #aaa;">
+            <h:form id="form">   
+            <h:graphicImage url="images/privilege_256.png"></h:graphicImage>
+            <h:graphicImage url="images/logo_petit_carfo.jpg" style="position:absolute;top:3%;left: 80%"></h:graphicImage>
+        <h:panelGrid columns="2" cellpadding="5">  
+            <h:outputLabel for="username" value="login: *"
+              style="font:italic 12px Verdana;border-radius:2px;"/>  
+            <p:inputText value="#{connexionManagedBean.user.idCompt}" autocomplete="yes" id="username" required="true" label="username"
+             style="font:icon;border-radius:2px;"  />  
+              
+            <h:outputLabel for="password" value="Password: *"
+              style="font:italic 12px Verdana;border-radius:2px;"/>  
+            <p:password id="password" value="#{connexionManagedBean.user.password}" 
+                         style="font:icon;border-radius:2px;" required="true"  immediate="true"/>
+            <h:outputLabel for="loginButton" value="" />
+            <p:commandButton id="loginButton"  value="Se connecter" update="message" action="#{connexionManagedBean.connecter()}"   
+                             style="font:italic 12px Verdana;border-radius:5px;background-color: #999;border-style: inherit;font-weight: bolder">
+                
+            </p:commandButton>       
+        </h:panelGrid> 
+            <p:messages id="message"  showDetail="true" autoUpdate="true" closable="true"/>
+       </h:form>  
+        </p:layoutUnit>
+            
+    </p:layout>
+    
+        
+    </h:body>
+
+</html>

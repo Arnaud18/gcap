@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Sabsente" table="sabsente" catalog="gcapv1">
+        <composite-id name="id" class="pojoandmapping.SabsenteId">
+            <key-property name="matricAg" type="string">
+                <column name="matricAg" length="12" />
+            </key-property>
+            <key-property name="dateDebut" type="date">
+                <column name="dateDebut" />
+            </key-property>
+            <key-property name="periode" type="string">
+                <column name="periode" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="absenceshebdo" class="pojoandmapping.Absenceshebdo" update="false" insert="false" fetch="select">
+            <column name="dateDebut" not-null="true" />
+        </many-to-one>
+        <many-to-one name="agent" class="pojoandmapping.Agent" update="false" insert="false" fetch="select">
+            <column name="matricAg" length="12" not-null="true" />
+        </many-to-one>
+        <property name="nbJour" type="java.lang.Integer">
+            <column name="nbJour" />
+        </property>
+        <property name="motifGeneral" type="date">
+            <column name="motifGeneral" length="10" />
+        </property>
+        <property name="motifValable" type="java.lang.Boolean">
+            <column name="motifValable" />
+        </property>
+        <property name="nbJourDeduct" type="java.lang.Integer">
+            <column name="nbJourDeduct" />
+        </property>
+    </class>
+</hibernate-mapping>

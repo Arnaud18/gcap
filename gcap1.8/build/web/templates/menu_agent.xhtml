@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+   
+    <h:body style="background-image: url(images/body.png)">
+       
+      <table style="margin: 0px;height: 100%;width: 100%;background-image: url(images/content_bg.png);border-collapse: collapse">
+          <tr>
+              <td colspan="1" style="">
+                  <span style="margin-left: 22%;">
+                      <p:commandLink action="accueil_agent.xhtml">
+                        <p:graphicImage style="margin-top: 1%;" url="images/home.jpg" ></p:graphicImage>
+                      </p:commandLink>
+                      <p:graphicImage style="margin-left: 3%" url="images/fleche.png"></p:graphicImage>
+                  </span>
+                  <span style="margin-left: 1%;font-size:12px;color: #c7c6c6;font-family: serif"> 
+                      Bienvenue Mr/Mme #{connexionManagedBean.agent.prenAg} #{connexionManagedBean.agent.nomAg}
+                  </span>
+             
+                  <p:commandLink action="reponse_traitement" style="margin-left: 5%;text-decoration: none;font-size: 12px">
+                      <span class="badge badge-info">
+                      #{reponseTraitementManagedBean.returnNbNotification()} nouveau(x) message(s)
+                              </span>
+                  </p:commandLink>
+                  
+                  <span style="margin-left:5%;font-size:12px;color: #c7c6c6;">
+                      <p:commandLink style="right: 20%;color: red;text-decoration: none;font-family: serif" 
+                           onclick="document.location.href='#{facesContext.externalContext.requestContextPath}';"
+                           
+                           action="#{connexionManagedBean.deconnecter}">
+                          Deconnexion</p:commandLink>
+                  </span>
+              </td>
+     </tr>    
+          </table> 
+    </h:body>
+        
+    
+</html>

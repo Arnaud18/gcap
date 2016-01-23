@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Semaine" table="semaine" catalog="gcapv1">
+        <id name="dateDebut" type="date">
+            <column name="dateDebut" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="dateFin" type="date">
+            <column name="dateFin" length="10" />
+        </property>
+        <set name="absenceshebdos" inverse="true">
+            <key>
+                <column name="dateDebut" length="10" />
+            </key>
+            <one-to-many class="pojoandmapping.Absenceshebdo" />
+        </set>
+    </class>
+</hibernate-mapping>

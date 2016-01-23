@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" 
+            type="text/css" 
+            href="../css/bootstrap.css"/>
+    </h:head>
+    <h:body style="background-image: url(images/body.png);background-repeat:repeat;">
+        <h:form id="formulaire" style="border:0px;">
+            <table style="width: 71.3%;margin-right: 13%;margin-left: 15%;border-collapse: collapse;border:none">
+                <tr style="height: 93px;width: 100%;margin: 0px;width: 100%">
+             <td colspan="1" style="border-collapse: collapse;padding: 0px;border: 0px">
+     <ui:include src="entete.xhtml"/>
+     </td>
+     </tr>
+                <tr style="height: 30px;border:0px;margin: 0px;width: 100%">
+         <td colspan="1" style="border-collapse: collapse;padding: 0px;border: 0px">
+     <ui:include src="menu_agent.xhtml"/>
+     </td>
+     </tr>
+                <tr style="height: 442px;border:0px;margin: 0px;width: 100%">
+         <td colspan="1" style="border-collapse: collapse;padding: 0px;border: 0px">
+     <ui:insert name="contenu" >
+     </ui:insert>
+     </td>
+     </tr>
+     <ui:include src="basdepage.xhtml"/>
+     </table>
+        </h:form>
+    </h:body>
+    </f:view>
+</html>

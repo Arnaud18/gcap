@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Piecesjustif" table="piecesjustif" catalog="gcapv1">
+        <id name="idPiece" type="string">
+            <column name="idPiece" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomPiece" type="string">
+            <column name="nomPiece" length="30" />
+        </property>
+        <property name="typeFormat" type="java.lang.Boolean">
+            <column name="typeFormat" />
+        </property>
+        <set name="typecongePjs" inverse="true">
+            <key>
+                <column name="idPiece" length="10" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.TypecongePj" />
+        </set>
+    </class>
+</hibernate-mapping>

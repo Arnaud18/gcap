@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+        <link rel="stylesheet" href="../css/bootstrap-responsive.css" type="text/css"/>
+
+    
+      <h:body>  
+          
+          <table style="height: 100%;width: 100%;background-image: url(images/content_bg.png);">
+          <tr>
+              <td colspan="1" style="width: 21.15%;">
+                  <table style="position: relative;width: 70%;height: 80%;margin-left: 15%;
+                                margin-right: 15%;border: none; text-align: center">
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Absences en cours</p:commandLink>
+                          </td>
+                              
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Demandes non traitées</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Statistiques absences</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Absences non justifiées</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Statistiques demandes</p:commandLink>
+                          </td>
+                      </tr>
+                      
+                  </table>    
+     
+              </td> 
+              <td colspan="1" style="background-color: white;margin-top: 1px; ">
+               <h:form id="form" style="">
+    
+       <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true"/>
+    <p:dataTable id="formDT" style="margin: 5%;" var="agTraiteDemConge" 
+                 scrollable="true" scrollWidth="674px" editable="true" editMode="cell"
+                 rows="5"
+                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 rowsPerPageTemplate="5,5,5" 
+                 value="#{traiterDemCongAn.returnDemATraite()}">
+       
+       
+           
+        
+        <f:facet name="header">
+            Traitement de demande : #{traiterDemCongAn.returnDemATraite().rowCount} demande (s)
+        </f:facet>
+        <p:column headerText="Matricule" style="width: 60px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.agent.matricAg}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="N° Demande" style="width: 60px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.numDemConge}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="Date demande" style="width: 70px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.dateDem}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="Date début" style="width: 70px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.dateDebut}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="Date fin" style="width: 70px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.dateFin}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="Commentaire" style="width: 125px;font: normal 12px Verdana">
+            <h:outputText value="#{agTraiteDemConge.conge.commentaire}" style="font: normal 10px Verdana;" />
+        </p:column>
+        <p:column headerText="Détail" style="text-align: center;width: 40px;font: normal 12px Verdana">
+             <p:commandButton actionListener="#{traiterDemCongAn.obtenirDetailAgent()}"  oncomplete="PF('carDialog').show()" icon="ui-icon-plus" title="Voir plus d'informations sur l'agent">
+                 <f:setPropertyActionListener  value="#{agTraiteDemConge}" target="#{traiterDemCongAn.agTraiteDemCongSelect}" />   
+            </p:commandButton>    
+        </p:column>
+       <p:column headerText="Statistiques" style="text-align: center;width: 75px;font: normal 12px Verdana">
+           <p:commandButton  oncomplete="PF('statistiqueAbs').show()" icon="ui-icon-search" title="Voir statistiques des absences">
+                 <f:setPropertyActionListener  value="#{agent}" target="#{traiterDemCongAn.selectedAgent}" />
+            </p:commandButton>    
+        </p:column>
+        <p:column headerText="Décision" style="text-align: center;width: 125.5px;font: normal 12px Verdana">
+            
+            <p:selectOneRadio id="avis" value="#{agTraiteDemConge.avis}">
+                <f:selectItem itemLabel="Oui" itemValue="1" />
+          <f:selectItem itemLabel="Non" itemValue="0"/>
+       </p:selectOneRadio>
+       </p:column>
+        <p:column headerText="Commentaire" style="width: 120px;font: normal 9px Verdana">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{agTraiteDemConge.commentaire}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{agTraiteDemConge.commentaire}" style="width:96%;font:normal 10px Verdana;" label="Year"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       <p:column headerText="Valider" style="width: 125px;font: normal 9px Verdana;text-align: center">
+           <p:commandButton style="alignment-adjust: central " value="valider" icon="ui-icon-check"
+                            update="formDT" actionListener="#{traiterDemCongAn.enregistreTraitement()}"  >
+                <p:confirm header="Confirmation" message="Etes vous sûr?" icon="ui-icon-alert"  />
+           </p:commandButton>
+ 
+           <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" severity="alert">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"  />
+    </p:confirmDialog>
+        </p:column>
+       
+    </p:dataTable>
+       
+       
+       <p:dialog header="Informations supplémentaires" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="explode" resizable="false" >
+        <p:outputPanel id="carDetail" style="text-align:center;border-color: #c7c6c6;">
+            <p:panelGrid  style="border-color: #c7c6c6;" columns="2" rendered="#{not empty traiterDemCongAn.selectedAgent}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage url="images/logo_grand_carfo.jpg" />
+                </f:facet>
+ 
+                <h:outputText style="font-family: serif;font-size: 12px" value="Nom:" />
+                <h:outputText  style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.nomAg}" />
+ 
+                <h:outputText style="font-family: serif;font-size: 12px" value="Prenom:" />
+                <h:outputText style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.prenAg}" />
+ 
+                <h:outputText style="font-family: serif;font-size: 12px" value="Date de naissance:" />
+                <h:outputText style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.dateNaissance}"/>
+ 
+                <h:outputText style="font-family: serif;font-size: 12px" value="Profession:" />
+                <h:outputText style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.profession}" />
+                
+                <h:outputText style="font-family: serif;font-size: 12px" value="Service:" />
+                <h:outputText style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.service.nomService}" />
+                
+                <h:outputText style="font-family: serif;font-size: 12px" value="Direction:" />
+                <h:outputText style="font-family: serif;font-size: 12px" value="#{traiterDemCongAn.agTraiteDemCongSelect.conge.agent.service.direction.nomDirect}" />
+                
+            </p:panelGrid>
+            
+        </p:outputPanel>
+    </p:dialog>
+       
+    </h:form>
+                  
+              </td>
+             </tr>    
+          </table>
+          <div>
+           
+           </div>
+          
+      </h:body>
+        
+</html>

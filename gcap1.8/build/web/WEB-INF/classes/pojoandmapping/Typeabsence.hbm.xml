@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Typeabsence" table="typeabsence" catalog="gcapv1">
+        <id name="codeTypeAbs" type="string">
+            <column name="codeTypeAbs" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomAbs" type="string">
+            <column name="nomAbs" length="50" />
+        </property>
+        <property name="nbJrMax" type="java.lang.Integer">
+            <column name="nbJrMax" />
+        </property>
+        <property name="absDeduct" type="java.lang.Boolean">
+            <column name="absDeduct" />
+        </property>
+        <set name="autorisationabsences" inverse="true">
+            <key>
+                <column name="codeTypeAbs" length="10" />
+            </key>
+            <one-to-many class="pojoandmapping.Autorisationabsence" />
+        </set>
+    </class>
+</hibernate-mapping>

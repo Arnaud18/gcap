@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Direction" table="direction" catalog="gcapv1">
+        <id name="codeDirect" type="string">
+            <column name="codeDirect" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomDirect" type="string">
+            <column name="nomDirect" length="50" />
+        </property>
+        <set name="services" inverse="true">
+            <key>
+                <column name="codeDirect" length="10" />
+            </key>
+            <one-to-many class="pojoandmapping.Service" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Conge" table="conge" catalog="gcapv1">
+        <id name="numDemConge" type="string">
+            <column name="numDemConge" length="20" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="typeconge" class="pojoandmapping.Typeconge" fetch="select">
+            <column name="codeTypeConge" length="10" />
+        </many-to-one>
+        <many-to-one name="agent" class="pojoandmapping.Agent" fetch="select" lazy="false" update="false" insert="false">
+            <column name="matricAg" length="12" />
+        </many-to-one>
+        <property name="dateDem" type="date">
+            <column name="dateDem" length="10" />
+        </property>
+        <property name="dateDebut" type="date">
+            <column name="dateDebut" length="10" />
+        </property>
+        <property name="dateFin" type="date">
+            <column name="dateFin" length="10" />
+        </property>
+        <property name="villeJouissance" type="string">
+            <column name="villeJouissance" length="30" />
+        </property>
+        <property name="paysJouissance" type="string">
+            <column name="paysJouissance" length="30" />
+        </property>
+        <property name="commentaire" type="string">
+            <column name="commentaire" length="500" />
+        </property>
+        <set name="agtraitedemconges" inverse="true">
+            <key>
+                <column name="numDemConge" length="20" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Agtraitedemconge" />
+        </set>
+    </class>
+</hibernate-mapping>

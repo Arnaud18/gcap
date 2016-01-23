@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gcapv1</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="pojoandmapping/Conge.hbm.xml"/>
+    <mapping resource="pojoandmapping/Agtraitedemconge.hbm.xml"/>
+    <mapping resource="pojoandmapping/Agtraitedemabs.hbm.xml"/>
+    <mapping resource="pojoandmapping/Authentification.hbm.xml"/>
+    <mapping resource="pojoandmapping/Typeconge.hbm.xml"/>
+    <mapping resource="pojoandmapping/Piecesjustif.hbm.xml"/>
+    <mapping resource="pojoandmapping/Sabsente.hbm.xml"/>
+    <mapping resource="pojoandmapping/TypecongePj.hbm.xml"/>
+    <mapping resource="pojoandmapping/Autorisationabsence.hbm.xml"/>
+    <mapping resource="pojoandmapping/Direction.hbm.xml"/>
+    <mapping resource="pojoandmapping/Absenceshebdo.hbm.xml"/>
+    <mapping resource="pojoandmapping/Typeabsence.hbm.xml"/>
+    <mapping resource="pojoandmapping/Semaine.hbm.xml"/>
+    <mapping resource="pojoandmapping/Statut.hbm.xml"/>
+    <mapping resource="pojoandmapping/Service.hbm.xml"/>
+    <mapping resource="pojoandmapping/Agent.hbm.xml"/>
+    <mapping resource="pojoandmapping/ArchiveConge.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

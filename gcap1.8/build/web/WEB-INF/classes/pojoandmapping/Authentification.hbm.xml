@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Authentification" table="authentification" catalog="gcapv1">
+        <id name="idCompt" type="string">
+            <column name="idCompt" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="agent" class="pojoandmapping.Agent" fetch="join" lazy="false">
+            <column name="matricAg" length="12" />
+        </many-to-one>
+        <property name="password" type="string">
+            <column name="password" length="30" />
+        </property>
+        <property name="typeCompte" type="string">
+            <column name="typeCompte" length="8" />
+        </property>
+        <property name="bloque" type="java.lang.Boolean">
+            <column name="bloque" />
+        </property>
+    </class>
+</hibernate-mapping>

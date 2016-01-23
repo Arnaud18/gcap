@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Absenceshebdo" table="absenceshebdo" catalog="gcapv1">
+        <id name="idAbsence" type="java.lang.Integer">
+            <column name="idAbsence" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="semaine" class="pojoandmapping.Semaine" fetch="select">
+            <column name="dateDebut" length="10" />
+        </many-to-one>
+        <property name="nbAbsence" type="java.lang.Integer">
+            <column name="nbAbsence" />
+        </property>
+        <property name="nbPersAbs" type="java.lang.Integer">
+            <column name="nbPersAbs" />
+        </property>
+        <set name="sabsentes" inverse="true">
+            <key>
+                <column name="dateDebut" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Sabsente" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="gcapv1"/>
+  <table-filter match-name="service"/>
+  <table-filter match-name="statut"/>
+  <table-filter match-name="autorisationabsence"/>
+  <table-filter match-name="agent"/>
+  <table-filter match-name="typeconge"/>
+  <table-filter match-name="direction"/>
+  <table-filter match-name="authentification"/>
+  <table-filter match-name="piecesjustif"/>
+  <table-filter match-name="semaine"/>
+  <table-filter match-name="agtraitedemconge"/>
+  <table-filter match-name="conge"/>
+  <table-filter match-name="typeabsence"/>
+  <table-filter match-name="typeconge_pj"/>
+  <table-filter match-name="agtraitedemabs"/>
+  <table-filter match-name="sabsente"/>
+  <table-filter match-name="absenceshebdo"/>
+  <table-filter match-name="archive_conge"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+        
+
+    
+      <h:body>  
+          <table style="height: 100%;width: 100%;background-image: url(images/content_bg.png)">
+          <tr>
+              <td colspan="1" style="width: 21.15%;">
+                  <table style="position: relative;width: 70%;height: 80%;margin-left: 15%;
+                                margin-right: 15%;border: none; text-align: center;">
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif"> Nouvelle demande</p:commandLink>
+                          </td>
+                              
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Demandes en cours...</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Paramètres compte</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Historiques demandes</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Messages <span class="badge badge-info">0</span></p:commandLink>
+                          </td>
+                      </tr>
+                      
+                  </table>    
+     
+              </td>
+              <td colspan="1" style="background-color: white">
+                  <table  style="position: relative;width: 70%;height: 80%;margin-left: 15%;
+                                 margin-right: 15%;border: 1px #f4f3f3 groove; border-radius: 5px;
+                                 margin-top: 5%;margin-bottom: 5%;">
+                      <tr>
+                         <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                             <p:commandLink action="valide"><p:graphicImage  url="images/img_absence_en_cours.jpg"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             <span style="font-family: cursive">Absences en cours</span>
+                         </td>
+                          <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                             <p:commandLink action="valide"><p:graphicImage  url="images/img_dem_a_traite.jpg"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             <span style="font-family: cursive">Demandes non traitées</span>
+                         </td>
+                          <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                        <p:commandLink><p:graphicImage  url="images/img_stat.jpg"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             <span style="font-family: cursive">Statistiques absences</span>
+                          </td>
+                   
+                        </tr>
+                      <tr>
+                          
+                          <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                        <p:commandLink><p:graphicImage url="images/img_stat.jpg"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             
+                             <span style="font-family: cursive">Statistiques demandes</span>
+                        </td>
+                        <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                           <p:commandLink><p:graphicImage  url="images/img_absence_non_justif.png"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             <span style="font-family: cursive">Absences non justifiées</span>
+                          </td>
+                          <td  colspan="1" style="border:1px #f4f3f3 groove; width: 21.15%;text-align:center">
+                        <p:commandLink><p:graphicImage  url="images/img_add_user.png"></p:graphicImage> </p:commandLink>
+                             <br></br>
+                             <span style="font-family: cursive">Gestion utilisateurs</span>
+                          </td>
+                          
+                        
+                        </tr>
+                  </table>
+     
+              </td>
+     </tr>    
+          </table>         
+      </h:body>
+</html>

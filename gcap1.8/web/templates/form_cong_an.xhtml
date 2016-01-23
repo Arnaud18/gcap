@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+        <link rel="stylesheet" href="../css/bootstrap-responsive.css" type="text/css"/>
+
+    
+      <h:body>  
+          
+          <table style="height: 100%;width: 100%;background-image: url(images/content_bg.png)">
+          <tr>
+              <td colspan="1" style="width: 21.15%;">
+                  <table style="position: relative;width: 70%;height: 80%;margin-left: 15%;
+                                margin-right: 15%;border: none; text-align: center;">
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif"> Congé annuel</p:commandLink>
+                          </td>
+                              
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Congé maladie</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Congé de maternité</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Congé de paternité</p:commandLink>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="border-bottom:3px #000 groove;width: 3px;;font-size:12px;color: #c7c6c6;">
+                              <p:commandLink style="text-decoration: none;font-family: serif">Congé pour assistance maladie</p:commandLink>
+                          </td>
+                      </tr>
+                      
+                  </table>    
+     
+              </td> 
+              <td colspan="1" style="background-color: white">
+                  <p:layout style="height: 66%;width: 40%;position: absolute;left: 35%;top: 23%;right: 30%; ">
+        
+        <p:layoutUnit position="center" header="Congé annuel" 
+             style="position: relative ;height: 99%;width: 70%;border-radius:5px;">
+          <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />  
+            <h:form id="form" style=""> 
+          
+           <h:panelGrid columns="2" cellpadding="5">
+            <h:outputText value="" />
+            <h:outputText id="numDemConge" value="Demande n° #{connexionManagedBean.numDemCong}"  style="color: blue;font-size: 20px;font-family: serif"/>
+            <h:outputText value="" />
+            <h:outputText value="" />
+            <h:outputLabel for="dateDebut" value="Date de début: *"
+              style="font-family: serif;font-size:14px"/> 
+            <h:panelGroup>
+                <p:calendar id="dateDebut" 
+                            value="#{demCongManagedBean.conge.dateDebut}"
+                            maxlength="10" size="22" mode="popup" navigator="true"
+                            pattern="yyyy-MM-dd"
+                            style="font: normal 12px Verdana;" >
+                    <p:ajax event="blur" update="dateFin" listener="#{demCongManagedBean.findDateFin()}" />
+                </p:calendar>
+            <p:tooltip  for="dateDebut" style="font-family: serif;font-size:14px" value="Vous avez droit à #{connexionManagedBean.nbreJrCong} jours de congé"/>
+            </h:panelGroup>
+              
+            <h:outputLabel  for="dateFin" value="Date de fin: *"
+                            style="font-family: serif;font-size:14px"/>
+            <h:panelGroup>
+            <p:calendar id="dateFin"   
+                        value="#{demCongManagedBean.conge.dateFin}"
+                         maxlength="10" size="22" mode="popup" navigator="true" 
+                        pattern="yyyy-MM-dd"
+                        disabled="true"
+                        style="font: normal 12px Verdana;" >
+                <p:ajax event="keyup" update="tooltipNbJrCong" listener="#{connexionManagedBean.returnNombreDeJourCong()}" />
+            </p:calendar>
+                <p:tooltip id="tooltipNbJrCong" for="dateFin" style="font-family: serif;font-size:14px" value="Vous avez droit à #{connexionManagedBean.nbreJrCong} jours de congé"/>
+            </h:panelGroup>
+            
+            <h:outputLabel for="pays" value="Pays de jouissance:"
+                           style="font-family: serif;font-size:14px"/>
+            
+            <h:selectOneMenu id="pays" value="#{demCongManagedBean.conge.paysJouissance}" style="font-family: monospace">      
+             <f:selectItem itemValue="Burkina" itemLabel="Burkina Faso" />
+             <f:selectItem itemValue="Côte D'Ivoire" itemLabel="Côte d'Ivoire"/>
+             <f:selectItem itemValue="mali" itemLabel="Mali"/>
+             <f:selectItem itemValue="Niger" itemLabel="Niger"/>
+             <f:selectItem itemValue="Togo" itemLabel="Togo"/>
+             <f:selectItem itemValue="Benin" itemLabel="Benin"/>
+             <f:selectItem itemValue="Ghana" itemLabel="ghana"/>
+             <f:selectItem itemValue="France" itemLabel="France"/>
+             <f:selectItem itemValue="USA" itemLabel="USA"/>
+             <f:selectItem itemValue="Turquie" itemLabel="Turquie"/>
+             <f:selectItem itemValue="Autre" itemLabel="Autre pays"/>
+             </h:selectOneMenu>
+        <h:outputLabel for="villeJouissance" value="Ville de jouissance:"
+              style="font-family: serif;font-size:14px"/> 
+        <p:inputText value="#{demCongManagedBean.conge.villeJouissance}" autocomplete="yes" id="villeJouissance" label="villeJouissance"
+             style="font-family: serif;;font-size:14px;border-radius:2px;"  />
+        <h:outputLabel for="commentaire" value="Commentaire:"
+                       style="font-family: serif;font-size:14px"/>
+        <h:inputTextarea id="commentaire" value="#{demCongManagedBean.conge.commentaire}" 
+                         style="font-family: serif;font-size:14px">
+        </h:inputTextarea>
+        <h:outputLabel for="envoiForm" />
+        <h:panelGroup>
+            <p:commandButton id="envoiForm"  value="Transmettre" icon="ui-icon-check" actionListener="#{demCongManagedBean.newDemConge()}" update="form" 
+                             style="font:normal 15px Verdana;font-family:serif ;border-radius:5px;background-color: #999;border-style: inherit;font-weight: bolder">
+                             
+            </p:commandButton>
+            <p:commandButton type="reset" value="Annuler" update="form:numDemConge"
+                         style="font:normal 15px Verdana;font-family:serif ;border-radius:5px;background-color: #999;border-style: inherit;font-weight: bolder">
+            
+        </p:commandButton>
+        </h:panelGroup>
+        </h:panelGrid> 
+            
+           </h:form>  
+        </p:layoutUnit>
+            
+    </p:layout>
+
+              </td>
+              </tr>    
+          </table>
+      </h:body>
+</html>

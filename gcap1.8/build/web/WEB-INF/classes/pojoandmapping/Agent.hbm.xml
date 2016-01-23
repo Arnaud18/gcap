@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Agent" table="agent" catalog="gcapv1">
+        <id name="matricAg" type="string">
+            <column name="matricAg" length="12" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="service" class="pojoandmapping.Service" fetch="join" lazy="false" update="false" insert="false">
+            <column name="codeService" length="15" />
+        </many-to-one>
+        <many-to-one name="statut" class="pojoandmapping.Statut" fetch="select">
+            <column name="idStatut" />
+        </many-to-one>
+        <property name="nomAg" type="string">
+            <column name="nomAg" length="20" />
+        </property>
+        <property name="prenAg" type="string">
+            <column name="prenAg" length="20" />
+        </property>
+        <property name="sexe" type="string">
+            <column name="sexe" length="1" />
+        </property>
+        <property name="telAgent" type="string">
+            <column name="telAgent" length="8" />
+        </property>
+        <property name="fonction" type="string">
+            <column name="fonction" length="30" />
+        </property>
+        <property name="dateNaissance" type="timestamp">
+            <column name="dateNaissance" length="19" />
+        </property>
+        <property name="situationMat" type="string">
+            <column name="situationMat" length="50" />
+        </property>
+        <property name="profession" type="string">
+            <column name="profession" length="50" />
+        </property>
+        <property name="soldePharmacie" type="java.lang.Integer">
+            <column name="soldePharmacie" precision="8" scale="0" />
+        </property>
+        <property name="cdPositAg" type="string">
+            <column name="cdPositAg" length="3" />
+        </property>
+        <property name="datePosit" type="timestamp">
+            <column name="datePosit" length="19" />
+        </property>
+        <property name="emailAg" type="string">
+            <column name="emailAg" length="40" />
+        </property>
+        <property name="typeAgent" type="java.lang.Boolean">
+            <column name="typeAgent" />
+        </property>
+        <property name="datePriseService" type="timestamp">
+            <column name="datePriseService" length="19" />
+        </property>
+        <set name="agtraitedemabses" inverse="true">
+            <key>
+                <column name="matricAg" length="12" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Agtraitedemabs" />
+        </set>
+        <set name="sabsentes" inverse="true">
+            <key>
+                <column name="matricAg" length="12" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Sabsente" />
+        </set>
+        <set name="authentifications" inverse="true">
+            <key>
+                <column name="matricAg" length="12" />
+            </key>
+            <one-to-many class="pojoandmapping.Authentification" />
+        </set>
+        <set name="agtraitedemconges" inverse="true">
+            <key>
+                <column name="matricAg" length="12" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Agtraitedemconge" />
+        </set>
+        <set name="autorisationabsences" inverse="true">
+            <key>
+                <column name="matricAg" length="12" />
+            </key>
+            <one-to-many class="pojoandmapping.Autorisationabsence" />
+        </set>
+        <set name="conges" inverse="true">
+            <key>
+                <column name="matricAg" length="12" />
+            </key>
+            <one-to-many class="pojoandmapping.Conge" />
+        </set>
+    </class>
+</hibernate-mapping>

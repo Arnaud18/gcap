@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.TypecongePj" table="typeconge_pj" catalog="gcapv1">
+        <composite-id name="id" class="pojoandmapping.TypecongePjId">
+            <key-property name="idPiece" type="string">
+                <column name="idPiece" length="10" />
+            </key-property>
+            <key-property name="codeTypeConge" type="string">
+                <column name="codeTypeConge" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="typeconge" class="pojoandmapping.Typeconge" update="false" insert="false" fetch="select">
+            <column name="idPiece" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="piecesjustif" class="pojoandmapping.Piecesjustif" update="false" insert="false" fetch="select">
+            <column name="idPiece" length="10" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

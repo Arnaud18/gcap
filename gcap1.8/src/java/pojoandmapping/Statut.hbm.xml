@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Statut" table="statut" catalog="gcapv1">
+        <id name="idStatut" type="int">
+            <column name="idStatut" />
+            <generator class="assigned" />
+        </id>
+        <property name="grade" type="java.lang.Integer">
+            <column name="grade" />
+        </property>
+        <property name="echelon" type="java.lang.Integer">
+            <column name="echelon" />
+        </property>
+        <property name="salaire" type="java.lang.Integer">
+            <column name="salaire" />
+        </property>
+        <set name="agents" inverse="true">
+            <key>
+                <column name="idStatut" />
+            </key>
+            <one-to-many class="pojoandmapping.Agent" />
+        </set>
+    </class>
+</hibernate-mapping>

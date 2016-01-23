@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Autorisationabsence" table="autorisationabsence" catalog="gcapv1">
+        <id name="numDemAbs" type="string">
+            <column name="numDemAbs" length="20" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="typeabsence" class="pojoandmapping.Typeabsence" fetch="select">
+            <column name="codeTypeAbs" length="10" />
+        </many-to-one>
+        <many-to-one name="agent" class="pojoandmapping.Agent" fetch="select">
+            <column name="matricAg" length="12" />
+        </many-to-one>
+        <property name="dateDem" type="date">
+            <column name="dateDem" length="10" />
+        </property>
+        <property name="dateDebutAbs" type="date">
+            <column name="dateDebutAbs" length="10" />
+        </property>
+        <property name="dateFinAbs" type="date">
+            <column name="dateFinAbs" length="10" />
+        </property>
+        <property name="dateRetourEff" type="date">
+            <column name="dateRetourEff" length="10" />
+        </property>
+        <property name="commentaire" type="string">
+            <column name="commentaire" length="500" />
+        </property>
+        <set name="agtraitedemabses" inverse="true">
+            <key>
+                <column name="numDemAbs" length="20" not-null="true" />
+            </key>
+            <one-to-many class="pojoandmapping.Agtraitedemabs" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 juin 2014 16:20:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="pojoandmapping.Service" table="service" catalog="gcapv1">
+        <id name="codeService" type="string">
+            <column name="codeService" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="direction" class="pojoandmapping.Direction" fetch="join" lazy="false">
+            <column name="codeDirect" length="10" />
+        </many-to-one>
+        <property name="nomService" type="string">
+            <column name="nomService" length="50" />
+        </property>
+        <property name="nbAgentService" type="java.lang.Integer">
+            <column name="nbAgentService" />
+        </property>
+        <set name="agents" inverse="true">
+            <key>
+                <column name="codeService" length="15" />
+            </key>
+            <one-to-many class="pojoandmapping.Agent" />
+        </set>
+    </class>
+</hibernate-mapping>
